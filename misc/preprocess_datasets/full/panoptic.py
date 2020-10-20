@@ -1,5 +1,3 @@
-import ipdb
-import sys
 import os.path as osp
 
 import numpy as np
@@ -93,10 +91,11 @@ def process_panoptic(panoptic_path, dataset_name, sequence_idx):
         hd_img_path = osp.join(panoptic_path, dataset_name, 'hdImgs/')
         hd_skel_json_path = osp.join(panoptic_path, dataset_name, 'hdPose3d_stage1_coco19/')
         for hd_idx in tqdm(seq_idxs):
-            image_path = hd_img_path + '{0:02d}_{1:02d}/{0:02d}_{1:02d}_{2:08d}.png'.format(cam['panel'], cam['node'],
+            image_path = hd_img_path + '{0:02d}_{1:02d}/{0:02d}_{1:02d}_{2:08d}.jpg'.format(cam['panel'], cam['node'],
                                                                                             hd_idx)
             skel_json_fname = hd_skel_json_path + 'body3DScene_{0:08d}.json'.format(hd_idx)
 
+            print("Reading image: ", image_path)
             img = cv2.imread(image_path)
 
             re_img, scale_factor = mmcv.imrescale(img, scale, return_scale=True)
