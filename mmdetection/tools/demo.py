@@ -16,10 +16,14 @@ import sys
 import cv2
 import numpy as np
 
+print(sys.version)
+print(os.environ['PATH'])
+
 PROJECT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+#PROJECT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'mmcv'))
 sys.path.insert(0, PROJECT_PATH)
 
-from mmcv import Config
+from mmcv.utils.config import Config
 from mmcv.runner import Runner
 
 from mmcv.parallel import DataContainer as DC
@@ -149,6 +153,8 @@ def main():
     runner.resume(cfg.resume_from)
     model = runner.model
     model.eval()
+    # necessary for headless rendering
+    os.environ['PYOPENGL_PLATFORM'] = 'egl'
     render = Renderer(focal_length=FOCAL_LENGTH)
     img_transform = ImageTransform(
             size_divisor=32, **img_norm_cfg)
