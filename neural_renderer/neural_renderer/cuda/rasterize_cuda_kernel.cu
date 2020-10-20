@@ -6,8 +6,8 @@
 
 
 // for the older gpus atomicAdd with double arguments does not exist
-#if  __CUDA_ARCH__ < 600 and defined(__CUDA_ARCH__)
-static __inline__ __device__ double atomicAdd(double* address, double val) {
+#if  defined(__CUDA_ARCH__) and __CUDA_ARCH__ < 600
+/*static __inline__ __device__ double atomicAdd(double* address, double val) {
     unsigned long long int* address_as_ull = (unsigned long long int*)address;
     unsigned long long int old = *address_as_ull, assumed;
     do {
@@ -17,7 +17,7 @@ static __inline__ __device__ double atomicAdd(double* address, double val) {
     // Note: uses integer comparison to avoid hang in case of NaN (since NaN != NaN) } while (assumed != old);
     } while (assumed != old);
     return __longlong_as_double(old);
-}
+}*/
 #endif
 
 namespace{

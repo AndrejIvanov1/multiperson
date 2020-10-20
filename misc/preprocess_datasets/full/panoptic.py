@@ -1,5 +1,3 @@
-import ipdb
-import sys
 import os.path as osp
 
 import numpy as np

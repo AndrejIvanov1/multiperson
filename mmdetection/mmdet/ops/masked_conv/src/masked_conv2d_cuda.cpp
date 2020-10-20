@@ -17,6 +17,7 @@ int MaskedCol2imForwardLaucher(const at::Tensor col, const int height,
                                const at::Tensor mask_w_idx, const int mask_cnt,
                                at::Tensor im);
 
+#define AT_CHECK TORCH_CHECK
 #define CHECK_CUDA(x) AT_CHECK(x.type().is_cuda(), #x, " must be a CUDAtensor ")
 #define CHECK_CONTIGUOUS(x) \
   AT_CHECK(x.is_contiguous(), #x, " must be contiguous ")
