@@ -4,9 +4,12 @@ import torchvision
 from mmdetection.mmdet.models.utils.smpl_utils import batch_rodrigues, J24_TO_J14, H36M_TO_J14, J24_TO_H36M
 from mmdetection.mmdet.models.utils.pose_utils import reconstruction_error
 from mmdetection.mmdet.core.utils import AverageMeter
-from mmdetection.mmdet.models.utils.camera import PerspectiveCamera
+# from mmdetection.mmdet.models.utils.camera import PerspectiveCamera
+from smplifyx.camera import PerspectiveCamera
 from mmdetection.mmdet.models.utils.smpl.renderer import Renderer
-from mmdetection.mmdet.models.utils.smpl.body_models import SMPL, JointMapper
+from mmdetection.mmdet.models.utils.smpl.smpl import SMPL
+from smplifyx.utils import JointMapper
+# from mmdetection.mmdet.models.utils.smpl.body_models import SMPL, JointMapper
 from mmdetection.mmdet.models.utils.smpl.viz import draw_skeleton, J24_TO_J14, get_bv_verts, plot_pose_H36M
 import cv2
 import matplotlib.pyplot as plt
