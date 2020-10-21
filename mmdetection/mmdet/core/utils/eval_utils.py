@@ -2,7 +2,7 @@ import os.path as osp
 import torch
 import torchvision
 from mmdetection.mmdet.models.utils.smpl_utils import batch_rodrigues, J24_TO_J14, H36M_TO_J14, J24_TO_H36M
-from mmdetection.mmdet.models.utils.pose_utils import reconstruction_error, vectorize_distance
+from mmdetection.mmdet.models.utils.pose_utils import reconstruction_error
 from mmdetection.mmdet.core.utils import AverageMeter
 from mmdetection.mmdet.models.utils.camera import PerspectiveCamera
 from mmdetection.mmdet.models.utils.smpl.renderer import Renderer
@@ -251,6 +251,9 @@ class PanopticEvalHandler(EvalHandler):
         if use_gt:
             paired_idxs = torch.arange(gt_keypoints_3d.shape[0])
         else:
+            print(gt_keypoints_3d.shape)
+            print(pred_keypoints_3d_smpl.shape)
+            print((glb_vis * gt_keypoints_3d).numpy())
             dist = vectorize_distance((glb_vis * gt_keypoints_3d).numpy(),
                                       (glb_vis * pred_keypoints_3d_smpl).numpy())
             paired_idxs = torch.from_numpy(dist.argmin(1))
