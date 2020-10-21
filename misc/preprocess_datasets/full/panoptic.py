@@ -59,6 +59,9 @@ kpts_coco19 = [12, 19, 14, 9, 10, 11,
                3, 4, 5, 8, 7,  # 10
                6, 2, 1, 0, 20,  # 15
                22, 21, 23]
+
+J_24_to_J19 = kpts_coco19
+
 J24_to_J15 = [12, 13, 14, 9, 10, 11,  # 5s
               3, 4, 5, 8, 7, 6,  # 11
               2, 1, 0
@@ -114,7 +117,7 @@ def process_panoptic(panoptic_path, dataset_name, sequence_idx):
                                    np.array(cam['K']), cam['R'], cam['t'],
                                    cam['distCoef'])
                 kpts3d_J24 = np.zeros((24, 4))
-                kpts3d_J24[J24_to_J15] = skel.T
+                kpts3d_J24[J_24_to_J19] = skel.T
                 kpts3d_J24[:, -1] = kpts3d_J24[:, -1] > 0.1
                 valid = skel[3, :] > 0.1
                 pt_J24 = projectPoints(kpts3d_J24.T[0:3, :], np.array(cam['K']), cam['R'], cam['t'], cam['distCoef'])
@@ -152,6 +155,7 @@ def process_panoptic(panoptic_path, dataset_name, sequence_idx):
                         'kpts3d': np.array(gt_kpts3d),
                         }
             info_list.append(cur_info)
+            break
     annotation_path = osp.join(annotation_dir, f"{dataset_name}.pkl")
 
     with open(annotation_path, 'wb') as f:
