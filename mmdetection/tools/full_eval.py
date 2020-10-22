@@ -15,7 +15,7 @@ import sys
 PROJECT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 sys.path.insert(0, PROJECT_PATH)
 SMPLIFYX_PATH = os.path.join(PROJECT_PATH, 'misc', 'smplify-x')
-sys.path.insert(0, PROJECT_PATH)
+sys.path.insert(0, SMPLIFYX_PATH)
 from mmdetection.mmdet.core.utils import AverageMeter
 
 from mmdetection.mmdet.datasets import build_dataloader_fuse
@@ -34,8 +34,8 @@ from mmdet.models.smpl_heads.smpl_common import Discriminator
 from mmdetection.mmdet.models.utils.smpl_utils import batch_rodrigues, J24_TO_J14, H36M_TO_J14
 from mmdetection.mmdet.models.utils.pose_utils import reconstruction_error
 import numpy as np
-from mmdetection.mmdet.core.utils.eval_utils import H36MEvalHandler, EvalHandler, PanopticEvalHandler, \
-    MuPoTSEvalHandler
+#from mmdetection.mmdet.core.utils.eval_utils import H36MEvalHandler, EvalHandler, PanopticEvalHandler, \
+#    MuPoTSEvalHandler
 # from mmdetection.mmdet.models.utils.smpl.body_models import SMPL, JointMapper
 from smplifyx.smpl import SMPL
 from smplifyx.utils import JointMapper
