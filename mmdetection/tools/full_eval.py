@@ -48,12 +48,12 @@ openpose_joints = [24, 12, 17, 19, 21, 16, 18, 20, 0, 2, 5, 8, 1, 4,
 extra_joints = [8, 5, 45, 46, 4, 7, 21, 19, 17, 16, 18, 20, 47, 48, 49, 50, 51, 52, 53, 24, 26, 25, 28, 27]
 joints = torch.tensor(openpose_joints + extra_joints, dtype=torch.int32)
 joint_mapper = JointMapper(joints)
-smpl_params = dict(model_folder='data/smpl',
+smpl_params = dict(model_path='data/smpl',
                    joint_mapper=joint_mapper,
                    create_glb_pose=True,
                    body_pose_param='identity',
-                   create_body_pose=True,
-                   create_betas=True,
+                   #create_body_pose=True,
+                   #create_betas=True,
                    # create_trans=True,
                    dtype=torch.float32,
                    vposer_ckpt=None,
