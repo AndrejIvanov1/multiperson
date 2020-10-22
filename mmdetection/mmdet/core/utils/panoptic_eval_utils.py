@@ -144,10 +144,10 @@ class PanopticEvalHandler(EvalHandler):
         joint_mapper = JointMapper(joints)
         smpl_params = dict(model_folder='data/smpl',
                            joint_mapper=joint_mapper,
-                           create_glb_pose=True,
+                           #create_glb_pose=True,
                            body_pose_param='identity',
-                           create_body_pose=True,
-                           create_betas=True,
+                           #create_body_pose=True,
+                           #create_betas=True,
                            # create_trans=True,
                            dtype=torch.float32,
                            vposer_ckpt=None,
