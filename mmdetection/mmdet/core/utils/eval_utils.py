@@ -260,9 +260,6 @@ class PanopticEvalHandler(EvalHandler):
         if use_gt:
             paired_idxs = torch.arange(gt_keypoints_3d.shape[0])
         else:
-            print(gt_keypoints_3d.shape)
-            print(pred_keypoints_3d_smpl.shape)
-            print((glb_vis * gt_keypoints_3d).numpy())
             dist = vectorize_distance((glb_vis * gt_keypoints_3d).numpy(),
                                       (glb_vis * pred_keypoints_3d_smpl).numpy())
             paired_idxs = torch.from_numpy(dist.argmin(1))
