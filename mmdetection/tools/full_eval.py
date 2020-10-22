@@ -14,6 +14,8 @@ import sys
 
 PROJECT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 sys.path.insert(0, PROJECT_PATH)
+SMPLIFYX_PATH = os.path.join(PROJECT_PATH, 'misc', 'smplify-x')
+sys.path.insert(0, PROJECT_PATH)
 from mmdetection.mmdet.core.utils import AverageMeter
 
 from mmdetection.mmdet.datasets import build_dataloader_fuse
