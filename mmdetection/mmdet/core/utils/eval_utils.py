@@ -1,4 +1,9 @@
+import os
 import os.path as osp
+import sys
+PROJECT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..', '..'))
+SMPLIFYX_PATH = os.path.join(PROJECT_PATH, 'misc', 'smplify-x')
+sys.path.insert(0, PROJECT_PATH)
 import torch
 import torchvision
 from mmdetection.mmdet.models.utils.smpl_utils import batch_rodrigues, J24_TO_J14, H36M_TO_J14, J24_TO_H36M
