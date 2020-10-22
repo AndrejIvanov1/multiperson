@@ -36,7 +36,9 @@ from mmdetection.mmdet.models.utils.pose_utils import reconstruction_error
 import numpy as np
 from mmdetection.mmdet.core.utils.eval_utils import H36MEvalHandler, EvalHandler, PanopticEvalHandler, \
     MuPoTSEvalHandler
-from mmdetection.mmdet.models.utils.smpl.body_models import SMPL, JointMapper
+# from mmdetection.mmdet.models.utils.smpl.body_models import SMPL, JointMapper
+from smplifyx.smpl import SMPL
+from smplifyx.utils import JointMapper
 import matplotlib.pyplot as plt
 import neural_renderer as nr
 
